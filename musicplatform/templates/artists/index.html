@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Artists
+    <ul>
+        {% for artist in artists %}
+            <li>id: {{ artist.id }}</li>
+            <li>Stage name: {{ artist.name }}</li>
+            <li>Social: {{ artist.profile_link }}</li>
+            <li>Albums</li>
+            <ul>
+                {% for artist_album in artist_albums %}
+                {% if artist_album.artist_id == artist.id %}
+                    {% for album in albums %}
+                        {% if album.id == artist_album.album_id %}
+                            <li>id: {{ album.id }}</li>
+                            <li>Name:{{album.name}}</li>
+                            <li>Creation Time: {{ album.created }}</li>
+                            <li>Release datetime: {{album.release_datetime }}</li>
+                            <li>Cost: {{album.cost }}</li>
+                            <hr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}   
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</body>
+</html>

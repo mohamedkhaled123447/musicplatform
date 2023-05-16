@@ -1,0 +1,11 @@
+{% if form.errors %}
+    <div style="color:red ;">
+        {{ form.errors }}
+    </div>
+{% endif %}
+<h1>Create Artist</h1>
+<form method="post">
+    {%csrf_token%}
+    {{ form.as_p }}
+    <button type="submit">submit</button>
+</form>
